@@ -1,0 +1,176 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Lyrebird API",
+    "description": "Sample of backend API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "necdet.efee@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api/",
+      "description": "Development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Product"
+    }
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": ["Product"],
+        "summary": "Returns a list of products",
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort using a field currently only supports 'price'",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Starting point of data"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "End point of data"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Either order them in ascending or descending fashion"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON array of products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Product"],
+        "summary": "Add a product",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "sellerId": {
+                    "type": "number"
+                  },
+                  "amount": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": ["TRY"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns added product"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Product"],
+        "summary": "Get individual product given id",
+        "responses": {
+          "200": {
+            "description": "Returns a product"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Product"],
+        "summary": "Modify product given id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "sellerId": {
+                    "type": "number"
+                  },
+                  "amount": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "enum": ["TRY"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns updated product"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Product"],
+        "summary": "Delete product given id",
+        "responses": {
+          "200": {
+            "description": "Returns deleted product"
+          }
+        }
+      }
+    }
+  }
+}
