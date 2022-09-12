@@ -7,7 +7,8 @@
 
 ### Using Docker Compose
 
-1. Inside project directory run `docker compose up --abort-on-container-exit` (depending on docker version it might be `docker-compose`).
+1. Copy `.env.example` to `.env` and modify `DATABASE_URL` and Postgres settings accordingly.
+2. Inside project directory run `docker compose up --abort-on-container-exit` (depending on docker version it might be `docker-compose`).
 
 ### Manually
 
