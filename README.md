@@ -10,6 +10,8 @@
 1. Copy `.env.example` to `.env` and modify `DATABASE_URL` and Postgres settings accordingly.
 2. Inside project directory run `docker compose up --abort-on-container-exit` (depending on docker version it might be `docker-compose`).
 
+You can access documentation from here [http://localhost/api/documentation](http://localhost/api/documentation)
+
 ### Manually
 
 1. Inside project directory run `yarn install`.
